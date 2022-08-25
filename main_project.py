@@ -63,15 +63,15 @@ def create_bill(user):
     data += "\n"
     data += (("-"*total_indent))
     data += "\n\n"
-    data += ("Total\t|{:.2f}\t".format(tot).rjust(total_indent-14))
+    data += ("Total\t|{:.2f}\t".format(tot).rjust(100," "))
     data += "\n"
     tax = tot * 0.13
-    data += ("Tax\t|{:.2f}\t".format(tax).rjust(total_indent-17))
+    data += ("Tax\t|{:.2f}\t".format(tax).rjust(97," "))
     data += "\n"
     disc = tot * 0.05
-    data += ("Discount\t|{:.2f}\t".format(disc).rjust(total_indent-12))
+    data += ("Discount\t|{:.2f}\t".format(disc).rjust(102," "))
     data += "\n"
-    data += ("Net Total\t|{:.2f}\t".format(tot+tax-disc).rjust(total_indent-10))
+    data += ("Net Total\t|{:.2f}\t".format(tot+tax-disc).rjust(104," "))
     data += "\n"
     data += "\n"
     data += (("-"*total_indent))
@@ -95,7 +95,7 @@ if __name__=="__main__":
 
     while(checkout in ["NO", "N"]):
         Products.display_all_product()
-        ids = input("Select any product: ")
+        ids = input("Select the product id: ")
         print("\n")
         print("=="*50)
         try:
@@ -110,7 +110,7 @@ if __name__=="__main__":
         cart = input("Do you want to add in the cart?\n").upper()
 
         if (cart in ["YES", "Y"]):
-            qty = int(input("How many item do you want to add?\n"))
+            qty = int(input("How many items do you want to add?\n"))
             while(not(qty>0)):
                 qty = int(input("Quantity must be Greater than 0\nEnter Again:\n"))
             user.set_item_bought(ids, qty)
